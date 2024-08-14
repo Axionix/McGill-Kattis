@@ -4,10 +4,12 @@ L = [list(map(int, input().split())) for _ in range(n)]
 
 L.sort(key=lambda x: x[-1])
 
-i = 0
-while i != len(L)-1:
-    while L[i][1] > L[i+1][0]:
-        L.remove(L[i+1])
-    i += 1
+ans = 1
+
+x = L[0][1]
+for i in L[1:]:
+    if i[0] >= x:
+        ans += 1
+        x = i[1]
         
-print(len(L))
+print(ans)
